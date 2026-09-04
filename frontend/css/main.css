@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --bg: #F7F7F7;
+  --surface: #FFFFFF;
+  --border: #E0DCCB;
+  --danger: #B3261E;
+
+  /* botones, enlaces, y elementos interactivos */
+  --acc-ve: #2E8B57;
+  --acc-ve-dark: #256E46;
+  /* ofertas especiales y promociones */
+  --acc-am: #FFD700;
+  /* títulos y subtítulos */
+  --acc-mc: #8B4513;
+
+  --primary-font: 'Montserrat', sans-serif;
+  --header-font: 'Playfair Display', serif;
+
+  --primary-font-color: #333333;
+
+  /* descripciones de productos y texto secundario */
+  --secondary-font-color: #666666;
+
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--primary-font-color);
+    font-family: var(--primary-font);
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font);
+    color: var(--acc-mc);
+    text-wrap: balance;
+    margin: 0 0 0.5rem;
+}
+
+p {
+    color: var(--primary-font-color);
+    line-height: 1.55;
+}
+
+.descripcion, .txt-secundario {
+    color: var(--secondary-font-color);
+}
+
+a {
+    color: var(--acc-ve);
+}
+
+#sale, .promo {
+    color: var(--acc-am);
+}
+
+.title, .subtitle {
+    color: var(--acc-mc);
+}
+
+.container {
+    width: min(1100px, 100% - 3rem);
+    margin-inline: auto;
+}
+
+/* TODO: botones (.btn, .btn-primary, .btn-sm, .link-btn) */
+
+/* TODO: encabezado (.site-header, .header-inner, .logo, .main-nav, .cart-count, .auth-actions) */
+
+/* TODO: pie de página (.site-footer, .footer-inner, .footer-brand) */
+
+/* TODO: hero de portada (.hero, .hero-inner, .eyebrow) */
+
+/* TODO: categorías / misión-visión (.grid-categorias, .categoria-card, .mision-vision) */
+
+/* TODO: catálogo de productos (.filtros, .grid-productos, .producto-card, .producto-info) */
+
+/* TODO: detalle de producto (.detalle-producto, .detalle-imagen, .form-agregar-carrito) */
+
+/* TODO: formularios (.formulario-pagina, .formulario, .campo, .error, .form-mensaje) */
+
+/* TODO: carrito (.carrito-lista, .carrito-item, .carrito-resumen, .carrito-total, .btn-quitar) */
+
+/* TODO: mapa de tiendas en Nosotros (.mapa) */
+
+/* TODO: responsive (media query para detalle de producto y carrito en pantallas chicas) */
