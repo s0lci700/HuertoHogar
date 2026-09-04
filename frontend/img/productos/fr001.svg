@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-label="Imagen pendiente: Manzanas Fuji">
+  <rect width="480" height="360" fill="#F1EFE9"/>
+  <rect x="4" y="4" width="472" height="352" fill="none" stroke="#B9B29B" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="20" y="20" rx="6" ry="6" width="150" height="28" fill="#2E8B57"/>
+  <text x="95" y="39" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">FRUTAS FRESCAS</text>
+  <text x="240" y="185" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#4A4737" text-anchor="middle">Manzanas Fuji</text>
+  <text x="240" y="215" font-family="Arial, sans-serif" font-size="14" fill="#8A8571" text-anchor="middle">FR001 &middot; imagen pendiente</text>
+</svg>

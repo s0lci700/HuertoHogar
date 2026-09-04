@@ -1,0 +1,109 @@
+{
+    "categorias": [
+      { "id": "frutas",   "nombre": "Frutas Frescas",     "descripcion": "Frutas cultivadas y cosechadas en su punto óptimo de madurez." },
+      { "id": "verduras", "nombre": "Verduras Orgánicas",  "descripcion": "Verduras cultivadas sin pesticidas ni químicos." },
+      { "id": "organicos","nombre": "Productos Orgánicos", "descripcion": "Ingredientes naturales procesados de forma responsable." },
+      { "id": "lacteos",  "nombre": "Productos Lácteos",   "descripcion": "Lácteos de granjas locales, frescos y nutritivos." }
+    ],
+    "productos": [
+      {
+        "codigo": "FR001",
+        "nombre": "Manzanas Fuji",
+        "categoria": "frutas",
+        "precio": 1200,
+        "unidad": "kilo",
+        "stock": 150,
+        "origen": "Valle del Maule",
+        "descripcion": "Manzanas Fuji crujientes y dulces, con textura firme y sabor equilibrado entre dulce y ácido.",
+        "imagen": "img/productos/fr001.svg"
+      },
+      {
+        "codigo": "FR002",
+        "nombre": "Naranjas Valencia",
+        "categoria": "frutas",
+        "precio": 1000,
+        "unidad": "kilo",
+        "stock": 200,
+        "origen": "Chile",
+        "descripcion": "Jugosas y ricas en vitamina C, ideales para zumos frescos y refrescantes.",
+        "imagen": "img/productos/fr002.svg"
+      },
+      {
+        "codigo": "FR003",
+        "nombre": "Plátanos Cavendish",
+        "categoria": "frutas",
+        "precio": 800,
+        "unidad": "kilo",
+        "stock": 250,
+        "origen": "Chile",
+        "descripcion": "Plátanos maduros y dulces, ricos en potasio, ideales para el desayuno o como snack.",
+        "imagen": "img/productos/fr003.svg"
+      },
+      {
+        "codigo": "VR001",
+        "nombre": "Zanahorias Orgánicas",
+        "categoria": "verduras",
+        "precio": 900,
+        "unidad": "kilo",
+        "stock": 100,
+        "origen": "Región de O'Higgins",
+        "descripcion": "Zanahorias crujientes cultivadas sin pesticidas, excelente fuente de vitamina A y fibra.",
+        "imagen": "img/productos/vr001.svg"
+      },
+      {
+        "codigo": "VR002",
+        "nombre": "Espinacas Frescas",
+        "categoria": "verduras",
+        "precio": 700,
+        "unidad": "bolsa de 500g",
+        "stock": 80,
+        "origen": "Chile",
+        "descripcion": "Espinacas frescas y nutritivas, cultivadas bajo prácticas orgánicas, ideales para ensaladas y batidos verdes.",
+        "imagen": "img/productos/vr002.svg"
+      },
+      {
+        "codigo": "VR003",
+        "nombre": "Pimientos Tricolores",
+        "categoria": "verduras",
+        "precio": 1500,
+        "unidad": "kilo",
+        "stock": 120,
+        "origen": "Chile",
+        "descripcion": "Pimientos rojos, amarillos y verdes, ricos en antioxidantes, ideales para salteados y platos coloridos.",
+        "imagen": "img/productos/vr003.svg"
+      },
+      {
+        "codigo": "PO001",
+        "nombre": "Miel Orgánica",
+        "categoria": "organicos",
+        "precio": 5000,
+        "unidad": "frasco de 500g",
+        "stock": 50,
+        "origen": "Chile",
+        "descripcion": "Miel pura y orgánica producida por apicultores locales, rica en antioxidantes.",
+        "imagen": "img/productos/po001.svg"
+      },
+      {
+        "codigo": "PO003",
+        "nombre": "Quinua Orgánica",
+        "categoria": "organicos",
+        "precio": null,
+        "unidad": "kilo",
+        "stock": null,
+        "origen": "Chile",
+        "descripcion": "Quinua orgánica, fuente de proteína vegetal y fibra.",
+        "imagen": "img/productos/po003.svg"
+      },
+      {
+        "codigo": "PL001",
+        "nombre": "Leche Entera",
+        "categoria": "lacteos",
+        "precio": null,
+        "unidad": "litro",
+        "stock": null,
+        "origen": "Chile",
+        "descripcion": "Leche entera de granjas locales, rica en calcio y nutrientes esenciales.",
+        "imagen": "img/productos/pl001.svg"
+      }
+    ]
+  }
