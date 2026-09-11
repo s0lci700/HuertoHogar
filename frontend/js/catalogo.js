@@ -32,13 +32,14 @@ function crearTarjetaProducto(producto) {
         Unidad: ${producto.unidad}<br>
         Precio: ${formatearPrecio(producto.precio)}<br>
         
-        <!-- TODO: este botón todavía no funciona. Quedó del ejemplo de clase y
+        
+        <button data-codigo="${producto.codigo}">Agregar al carrito</button>
+  </div>`;
+  /*TODO: este botón todavía no funciona. Quedó del ejemplo de clase y
              tiene dos errores: agregarAlCarrito() no existe (la función se llama
              agregarProducto) y producto.id tampoco (el identificador es .codigo).
-             Reemplazar por: <button data-codigo="${producto.codigo}">, y dejar
-             que engancharBotonesAgregar() escuche los clics. -->
-        <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
-  </div>`;
+             Reemplazar por: , y dejar
+             que engancharBotonesAgregar() escuche los clics. </button>*/
   return div;
 }
 
@@ -111,6 +112,17 @@ function engancharBotonesAgregar() {
   // TODO: un solo listener en #grid-productos (delegación de eventos).
   //   grid.addEventListener("click", (event) => { ... })
   //
+  grid.addEventListener("click", (event) => {
+    const boton = event.target.closest("[data-codigo]");
+    if (!boton) {
+      return
+    }
+    //TODO:
+    let producto = productosDelCatalogo.find(i => i.codigo === boton.getAttribute("data-codigo"));
+    agregarProducto(producto, 1);
+    actualizarBadgeCarrito();
+    
+  })
   //   1. const boton = event.target.closest("[data-codigo]");  si no hay, salir
   //   2. buscar el producto en productosDelCatalogo por ese código
   //   3. agregarProducto(producto, 1)   <- falta implementarlo en carrito.js
