@@ -4,5 +4,5 @@
   <rect x="20" y="20" rx="6" ry="6" width="170" height="28" fill="#8B4513"/>
   <text x="105" y="39" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">PRODUCTOS L&#193;CTEOS</text>
   <text x="240" y="185" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#4A4737" text-anchor="middle">Leche Entera</text>
-  <text x="240" y="215" font-family="Arial, sans-serif" font-size="14" fill="#8A8571" text-anchor="middle">PL001 &middot; imagen pendiente</text>
+  <text x="240" y="215" font-family="Arial, sans-serif" font-size="14" fill="#8A8571" text-anchor="middle">PL001 · imagen pendiente</text>
 </svg>
