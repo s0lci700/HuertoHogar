@@ -176,6 +176,7 @@ footer,
 .producto-info {
   margin-top: 0.5rem;
   text-align: left;
+  text-transform: capitalize;
 }
 /* TODO: detalle de producto (.detalle-producto, .detalle-imagen, .form-agregar-carrito) */
 
