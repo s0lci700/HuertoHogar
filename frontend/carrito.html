@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carrito — HuertoHogar</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <!-- TODO: encabezado -->
-    <!-- TODO: lista de productos en el carrito (localStorage) -->
-    <!-- TODO: total y botón "Confirmar pedido" -->
-    <!-- TODO: pie de página -->
+
+<body data-page="carrito">
+    <div data-parcial="header"></div>
+
+    <main class="container">
+    <div class="row">
+      <div class="col-8">
+        <h1>Productos disponibles</h1>
+        <div id="grid-productos" class="grid-productos">
+           <!-- Los productos se cargarán aquí con JavaScript -->
+        </div>
+      </div><!-- .col-8-->
+
+      <div class="col-4"> 
+        <h2>🛒 Carrito</h2>
+        <div id="lista-carrito">
+          <!-- Los items del carrito se mostrarán aquí -->
+        </div>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+      </div> <!-- .col-4 -->
+    </div><!-- .row -->
+        <!-- TODO: lista de productos en el carrito (localStorage) -->
+        <!-- TODO: total y botón "Confirmar pedido" -->
+    </main>
+
+    <div data-parcial="footer"></div>
+
+    <script src="js/carrito.js"></script>
+    <script src="js/carrito-vista.js"></script>
+    <script src="js/layout.js"></script>
 </body>
+
 </html>

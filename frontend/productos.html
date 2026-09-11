@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Productos — HuertoHogar</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <!-- TODO: encabezado -->
-    <!-- TODO: filtros por categoría -->
-    <!-- TODO: grilla de productos (cargada desde database/productos.json) -->
-    <!-- TODO: pie de página -->
+
+<body data-page="productos">
+    <div data-parcial="header"></div>
+
+    <main class="container">
+        <!-- TODO: filtros por categoría -->
+         <div class="filtros"></div>
+        <!-- TODO: grilla de productos (cargada desde database/productos.json) -->
+    <div class="grid-productos" id="grid-productos"></div>
+    </main>
+
+    <div data-parcial="footer"></div>
+
+    <script src="js/carrito.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/layout.js"></script>
 </body>
+
 </html>
