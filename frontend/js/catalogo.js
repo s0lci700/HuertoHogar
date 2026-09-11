@@ -35,11 +35,6 @@ function crearTarjetaProducto(producto) {
         
         <button data-codigo="${producto.codigo}">Agregar al carrito</button>
   </div>`;
-  /*TODO: este botón todavía no funciona. Quedó del ejemplo de clase y
-             tiene dos errores: agregarAlCarrito() no existe (la función se llama
-             agregarProducto) y producto.id tampoco (el identificador es .codigo).
-             Reemplazar por: , y dejar
-             que engancharBotonesAgregar() escuche los clics. </button>*/
   return div;
 }
 
@@ -108,29 +103,19 @@ function renderizarFiltros(categorias) {
 }
 
 // Conecta el botón "Agregar al carrito" de cada tarjeta.
+// Va con delegación y no con onclick porque renderizarProductos() rehace
+// las tarjetas en cada filtro: los listeners puestos en cada botón se
+// perderían, el del contenedor no.
 function engancharBotonesAgregar() {
-  // TODO: un solo listener en #grid-productos (delegación de eventos).
-  //   grid.addEventListener("click", (event) => { ... })
-  //
   grid.addEventListener("click", (event) => {
     const boton = event.target.closest("[data-codigo]");
     if (!boton) {
       return
     }
-    //TODO:
     let producto = productosDelCatalogo.find(i => i.codigo === boton.getAttribute("data-codigo"));
     agregarProducto(producto, 1);
     actualizarBadgeCarrito();
-    
   })
-  //   1. const boton = event.target.closest("[data-codigo]");  si no hay, salir
-  //   2. buscar el producto en productosDelCatalogo por ese código
-  //   3. agregarProducto(producto, 1)   <- falta implementarlo en carrito.js
-  //   4. actualizarBadgeCarrito()       <- ya existe en layout.js
-  //
-  //   Va con delegación y no con onclick porque renderizarProductos() rehace
-  //   las tarjetas en cada filtro: los listeners puestos en cada botón se
-  //   perderían, el del contenedor no.
 }
 
 // Punto de entrada de esta página.

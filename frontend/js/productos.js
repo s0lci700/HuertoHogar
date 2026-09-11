@@ -8,10 +8,6 @@
 // Guarda el catálogo ya descargado para no volver a pedirlo en cada llamada.
 let catalogoCache = null;
 
-// TODO: hacer fetch de '../database/productos.json' y devolver el objeto ya parseado.
-//   - response.json() ya hace el JSON.parse, no hay que llamarlo a mano
-//   - revisar response.ok antes de leer el cuerpo
-//   - si catalogoCache ya tiene datos, devolverlos sin volver a descargar
 // Devuelve: { categorias: [...], productos: [...] }
 async function cargarCatalogo() {
   if (catalogoCache) {
@@ -29,7 +25,6 @@ async function cargarCatalogo() {
   return data;
 }
 
-// TODO: usar cargarCatalogo() y devolver el producto cuyo "codigo" coincida (o null).
 async function buscarPorCodigo(codigo) {
   const catalogo = await cargarCatalogo();
   return catalogo.productos.find((producto) => producto.codigo === codigo) || null;
