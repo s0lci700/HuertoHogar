@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-09-11T03:17:26.791Z",
+        "reason": "Tipografia exigida por el enunciado del caso: 'DSY1104 - Forma A tienda HUERTO HOGAR.pdf' p.4 especifica Montserrat como fuente principal y Playfair Display para encabezados. Requisito evaluado, no eleccion de diseno."
+      }
+    ]
+  }
+}
