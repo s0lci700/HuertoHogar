@@ -114,7 +114,7 @@ a {
 
 /* TODO: encabezado (.site-header, .header-inner, .logo, .main-nav, .cart-count, .auth-actions) */
 
-/* TODO: pie de página (.site-footer, .footer-inner, .footer-brand) */
+/* TODO: pie de página (.footer-inner, .footer-brand) */
 footer,
 .site-footer {
   background-color: var(--surface);
@@ -128,7 +128,7 @@ footer,
 
 /* TODO: hero de portada (.hero, .hero-inner, .eyebrow) */
 
-/* TODO: categorías / misión-visión (.grid-categorias, .categoria-card, .mision-vision) */
+/* TODO: categorías (.grid-categorias, .categoria-card) */
 
 .mision-vision {
   display: flex;
@@ -137,7 +137,7 @@ footer,
   margin-top: 2rem;
   text-wrap: pretty;
 }
-/* TODO: catálogo de productos (.filtros, .grid-productos, .producto-card, .producto-info) */
+
 .filtros {
   display: flex;
   gap: 1rem;
@@ -182,14 +182,44 @@ footer,
 
 /* TODO: formularios (.formulario-pagina, .formulario, .campo, .error, .form-mensaje) */
 
-/* TODO: carrito (.carrito-lista, .carrito-resumen, .carrito-total, .btn-quitar) */
+/* ---- Carrito ------------------------------------------------------------ */
 
-.carrito-item {
+/* El encabezado y las filas comparten estas columnas. Se declaran una sola vez
+   acá y se heredan hacia abajo, así no se pueden desalinear por accidente. */
+.carrito-lista {
+  --carrito-columnas: minmax(0, 1fr) 9.5rem 5rem 7rem 2.25rem 2.25rem 5rem;
   list-style: none;
-  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.carrito-header,
+.carrito-item {
+  display: grid;
+  grid-template-columns: var(--carrito-columnas);
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 0.25rem;
+}
+
+/* Fila de títulos: no es un dato, así que no lleva fondo ni borde de fila. */
+.carrito-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--acc-mc);
+  border-bottom: 2px solid var(--acc-mc);
+  padding-bottom: 0.4rem;
+}
+
+/* "Acciones" rotula de una sola vez las tres columnas de botones. */
+.carrito-header span:last-child {
+  grid-column: span 3;
+  text-align: center;
+}
+
+.carrito-item {
   border-bottom: 1px solid var(--border);
   background-color: var(--surface);
 }
@@ -198,37 +228,145 @@ footer,
   border-bottom: none;
 }
 
-.carrito-item span:first-child {
-  flex: 1 1 auto;
-  font-weight: 600;
-}
-
 .carrito-item span {
   color: var(--secondary-font-color);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Nombre del producto: la única columna que crece y se encoge (minmax(0, 1fr)). */
+.carrito-item span:first-child {
+  color: var(--primary-font-color);
+  font-weight: 600;
+}
+
+/* Subtotal. */
 .carrito-item span:last-of-type {
   color: var(--acc-ve-dark);
   font-weight: 600;
+}
+
+/* Precio y subtotal a la derecha, cantidad al centro: los números se leen
+   mejor alineados, y el encabezado tiene que seguir la misma regla. */
+.carrito-header span:nth-child(2),
+.carrito-header span:nth-child(4),
+.carrito-item span:nth-child(2),
+.carrito-item span:nth-child(4) {
+  text-align: right;
+}
+
+.carrito-header span:nth-child(3),
+.carrito-item span:nth-child(3) {
+  text-align: center;
 }
 
 .carrito-item button {
   font-family: var(--primary-font);
   font-size: 0.85rem;
   background: none;
-  border: 1px solid var(--danger);
-  color: var(--danger);
+  border: 1px solid var(--acc-ve);
+  color: var(--acc-ve-dark);
   border-radius: 4px;
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0;
+  width: 100%;
   cursor: pointer;
 }
 
 .carrito-item button:hover {
+  background-color: var(--acc-ve);
+  color: #fff;
+}
+
+.carrito-item button:focus-visible {
+  outline: 2px solid var(--acc-ve-dark);
+  outline-offset: 2px;
+}
+
+/* Los botones ocupan el 100% de su columna y las columnas tienen ancho fijo:
+   así el encabezado no se puede desalinear (con `auto` cada fila calculaba su
+   propio ancho y la columna 1fr absorbía la diferencia). */
+.carrito-item button[data-qty] {
+  font-weight: 700;
+}
+
+/* "Quitar" borra algo: rojo, distinto de + y -. */
+.carrito-item button:not([data-qty]) {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.carrito-item button:not([data-qty]):hover {
   background-color: var(--danger);
   color: #fff;
 }
 
+/* TODO: carrito (.carrito-resumen, .carrito-total) */
+
+/* En pantallas chicas las 7 columnas no caben: el encabezado se esconde y cada
+   item se arma en tres líneas con grid-template-areas. Los rótulos que se
+   pierden al ocultar el encabezado se reponen con ::before. */
+@media (max-width: 760px) {
+  .carrito-header {
+    display: none;
+  }
+
+  .carrito-item {
+    grid-template-columns: 1fr auto 2.25rem 2.25rem;
+    grid-template-areas:
+      "nombre   nombre   nombre nombre"
+      "precio   cantidad mas    menos"
+      "subtotal subtotal quitar quitar";
+    gap: 0.4rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .carrito-item span:nth-child(1) {
+    grid-area: nombre;
+  }
+
+  .carrito-item span:nth-child(2) {
+    grid-area: precio;
+    text-align: left;
+  }
+
+  .carrito-item span:nth-child(3) {
+    grid-area: cantidad;
+    text-align: left;
+  }
+
+  .carrito-item span:nth-child(3)::before {
+    content: "× ";
+  }
+
+  .carrito-item span:nth-child(4) {
+    grid-area: subtotal;
+    text-align: left;
+  }
+
+  .carrito-item span:nth-child(4)::before {
+    content: "Subtotal: ";
+    font-weight: 400;
+    color: var(--secondary-font-color);
+  }
+
+  .carrito-item button[data-qty="+"] {
+    grid-area: mas;
+  }
+
+  .carrito-item button[data-qty="-"] {
+    grid-area: menos;
+  }
+
+  .carrito-item button:not([data-qty]) {
+    grid-area: quitar;
+  }
+
+  .carrito-item button {
+    padding: 0.2rem 0;
+  }
+}
+
 /* TODO: mapa de tiendas en Nosotros (.mapa) */
 
-/* TODO: responsive (media query para detalle de producto y carrito en pantallas chicas) */
+/* TODO: responsive (media query para el detalle de producto) */
