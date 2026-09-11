@@ -22,14 +22,22 @@
 
       <div class="col-4"> 
         <h2>🛒 Carrito</h2>
-        <div id="lista-carrito">
+        <ul id="lista-carrito" class="carrito-lista">
           <!-- Los items del carrito se mostrarán aquí -->
+        </ul>
+
+        <!-- renderizarCarrito() muestra este párrafo y esconde #resumen-carrito
+             cuando el carrito está vacío, y al revés cuando tiene items. -->
+        <p id="carrito-vacio">Tu carrito está vacío.</p>
+
+        <div id="resumen-carrito" class="carrito-resumen">
+          <p class="carrito-total">Total: <span id="total-carrito">0</span></p>
+          <!-- TODO: botón "Confirmar pedido" -->
         </div>
-        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+
+        <button id="btn-vaciar">Vaciar Carrito</button>
       </div> <!-- .col-4 -->
     </div><!-- .row -->
-        <!-- TODO: lista de productos en el carrito (localStorage) -->
-        <!-- TODO: total y botón "Confirmar pedido" -->
     </main>
 
     <div data-parcial="footer"></div>
