@@ -11,9 +11,12 @@
 <body data-page="productos">
     <div data-parcial="header"></div>
 
-    <main class="container">
-        <!-- TODO: detalle del producto según ?codigo= en la URL -->
-        <!-- TODO: formulario para elegir cantidad y agregar al carrito -->
+    <main class="container detalle-pagina">
+        <p class="volver"><a href="productos.html">&larr; Volver al catálogo</a></p>
+
+        <!-- producto-detalle.js pinta acá dentro según el ?codigo= de la URL,
+             o un mensaje si ese código no existe. -->
+        <div id="detalle-producto"></div>
     </main>
 
     <div data-parcial="footer"></div>

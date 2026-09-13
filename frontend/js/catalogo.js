@@ -1,32 +1,30 @@
 // Página productos.html: pinta los filtros de categoría y la grilla de productos,
 // y engancha el botón "Agregar al carrito".
 //
-// Depende de: productos.js (cargarCatalogo) y carrito.js (agregarProducto).
+// Depende de: productos.js (cargarCatalogo), carrito.js (agregarProducto) y
+// layout.js (formatearPrecio).
 // Catálogo ya descargado, para poder filtrar sin volver a pedirlo.
 let productosDelCatalogo = [];
+
+// Mapa id -> nombre visible de cada categoría ("frutas" -> "Frutas Frescas").
+// La tarjeta se arma de forma síncrona, así que no puede usar la función
+// nombreCategoria() de productos.js, que es async: se arma este mapa una sola
+// vez al cargar el catálogo.
+let nombresDeCategoria = {};
 const grid = document.getElementById("grid-productos");
 
-// Formatea un precio en CLP. Devuelve "Precio a confirmar" cuando el valor es
-// null (PO003 Quinua y PL001 Leche: el enunciado nunca les asigna precio).
-function formatearPrecio(valor) {
-  if (valor === null) {
-    return "Precio a confirmar";
-  }
-  return new Intl.NumberFormat("es-CL", {
-    style: "currency",
-    currency: "CLP",
-  }).format(valor);
-}
-
 // Construye y devuelve la tarjeta de un producto.
-// TODO: falta el enlace al detalle -> producto.html?codigo=${producto.codigo}
+// El enlace al detalle es SOLO el nombre y a propósito no lleva data-codigo:
+// engancharBotonesAgregar() delega con closest("[data-codigo]"), así que una
+// tarjeta entera envuelta en <a data-codigo> agregaría al carrito con cualquier
+// clic, incluso sobre la imagen.
 function crearTarjetaProducto(producto) {
   const div = document.createElement("div");
   div.className = "producto-card";
   div.innerHTML = `
   <div class="producto-info">
         
-        <strong>${producto.nombre}</strong> <aside>(${producto.codigo}) - <span class="categoria">${producto.categoria}</span></aside><br>
+        <strong><a class="producto-nombre" href="producto.html?codigo=${producto.codigo}">${producto.nombre}</a></strong> <aside>(${producto.codigo}) - <span class="categoria">${nombresDeCategoria[producto.categoria] || producto.categoria}</span></aside><br>
         <img src="${producto.imagen}" alt="${producto.nombre}"><br>
         Origen: ${producto.origen}<br>
         Unidad: ${producto.unidad}<br>
@@ -122,13 +120,22 @@ function engancharBotonesAgregar() {
 async function iniciarCatalogo() {
   const grid = document.getElementById("grid-productos");
   if (!grid) return;
-  // TODO: envolver todo esto en try/catch y mostrar un mensaje en #grid-productos
-  // si el catálogo no carga (servidor caído, JSON malformado, ruta equivocada).
-  const datos = await cargarCatalogo();
-  productosDelCatalogo = datos.productos;
-  renderizarFiltros(datos.categorias);
-  renderizarProductos(datos.productos);
-  engancharBotonesAgregar();
+  // El error más habitual en desarrollo es abrir el .html con doble clic: ahí
+  // fetch() falla y sin este catch la grilla queda muda, sin ninguna pista.
+  try {
+    const datos = await cargarCatalogo();
+    productosDelCatalogo = datos.productos;
+    datos.categorias.forEach((categoria) => {
+      nombresDeCategoria[categoria.id] = categoria.nombre;
+    });
+    renderizarFiltros(datos.categorias);
+    renderizarProductos(datos.productos);
+    engancharBotonesAgregar();
+  } catch (error) {
+    console.error("No se pudo cargar el catálogo", error);
+    grid.innerHTML =
+      "<p>No pudimos cargar el catálogo. Revisa que el sitio esté abierto desde un servidor local.</p>";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", iniciarCatalogo);

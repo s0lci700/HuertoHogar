@@ -3,18 +3,8 @@
 
 const lista = document.getElementById("lista-carrito");
 
-function formatearPrecio(valor) {
-  if (valor === null) {
-    return "Precio a confirmar";
-  }
-  return new Intl.NumberFormat("es-CL", {
-    style: "currency",
-    currency: "CLP",
-  }).format(valor);
-}
-
 // Depende de: carrito.js (obtenerCarrito, actualizarCantidad, quitarProducto,
-// calcularTotal, vaciarCarrito).
+// calcularTotal, vaciarCarrito) y layout.js (formatearPrecio).
 function crearFilaCarrito(item) {
   let subtotal = item.precio * item.cantidad;
   const li = document.createElement("li");

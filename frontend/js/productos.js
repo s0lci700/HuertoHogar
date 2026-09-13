@@ -29,3 +29,11 @@ async function buscarPorCodigo(codigo) {
   const catalogo = await cargarCatalogo();
   return catalogo.productos.find((producto) => producto.codigo === codigo) || null;
 }
+
+// Devuelve el nombre visible de una categoría a partir de su id
+// ("frutas" -> "Frutas Frescas"), o el id si no está en el catálogo.
+async function nombreCategoria(id) {
+  const catalogo = await cargarCatalogo();
+  const categoria = catalogo.categorias.find((item) => item.id === id);
+  return categoria ? categoria.nombre : id;
+}

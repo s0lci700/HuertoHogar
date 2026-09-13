@@ -438,7 +438,134 @@ footer,
   text-align: left;
   text-transform: capitalize;
 }
-/* TODO: detalle de producto (.detalle-producto, .detalle-imagen, .form-agregar-carrito) */
+/* DETALLE DE PRODUCTO (producto.html)
+   Dos columnas: la foto a la izquierda con ancho tope, el texto y el formulario
+   a la derecha. El enunciado pide mostrar precio, descripción, origen y
+   disponibilidad, y la foto es el gancho ("imágenes de alta resolución"). */
+.detalle-pagina {
+  padding-block: 1.5rem 2rem;
+}
+
+.volver {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.detalle-producto {
+  display: grid;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--surface);
+}
+
+.detalle-imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.detalle-categoria {
+  margin: 0 0 0.25rem;
+  color: var(--acc-ve-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detalle-precio {
+  margin: 0 0 1rem;
+  color: var(--acc-ve-dark);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.detalle-unidad {
+  color: var(--secondary-font-color);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* Ficha de datos: la etiqueta a la izquierda en ancho fijo y el valor al lado,
+   que se lee más rápido que "Origen: ..." suelto dentro de un párrafo. */
+.detalle-datos {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 0.4rem 1rem;
+  margin: 1.25rem 0;
+  padding: 1rem 0;
+  border-block: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.detalle-datos dt {
+  color: var(--acc-mc);
+  font-weight: 700;
+}
+
+.detalle-datos dd {
+  margin: 0;
+  color: var(--secondary-font-color);
+}
+
+/* El campo de cantidad no necesita ocupar todo el ancho: es un número corto. */
+.form-agregar-carrito {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+}
+
+.form-agregar-carrito .campo {
+  width: 7rem;
+}
+
+.form-agregar-carrito .form-mensaje {
+  width: 100%;
+  margin: 0;
+}
+
+/* Producto sin precio publicado (PO003, PL001): el formulario queda visible
+   pero inerte, para que se entienda que no es un error de la página. */
+.form-agregar-carrito input:disabled,
+.form-agregar-carrito button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Código inexistente o ausente en la URL. */
+.detalle-vacio {
+  padding: 2.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--surface);
+  text-align: center;
+}
+
+.detalle-vacio .btn {
+  margin-top: 1rem;
+}
+
+/* El nombre de la tarjeta del catálogo es el enlace al detalle. */
+.producto-nombre {
+  color: var(--acc-mc);
+  text-decoration: none;
+}
+
+.producto-nombre:hover {
+  color: var(--acc-ve-dark);
+  text-decoration: underline;
+}
+
+.producto-nombre:focus-visible {
+  outline: 2px solid var(--acc-ve-dark);
+  outline-offset: 2px;
+}
 
 /* FORMULARIOS (registro, login, perfil)
    Columna angosta y centrada: son formularios cortos y una línea de 1100px de
@@ -739,4 +866,27 @@ footer,
 
 /* TODO: mapa de tiendas en Nosotros (.mapa) */
 
-/* TODO: responsive (media query para el detalle de producto) */
+/* Bajo 760px la foto y la ficha no caben lado a lado: se apilan en una columna.
+   Mismo punto de quiebre que el encabezado y el carrito. */
+@media (max-width: 760px) {
+  .detalle-producto {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 1rem;
+  }
+
+  /* La foto a pantalla completa se come el scroll antes de llegar al precio. */
+  .detalle-imagen {
+    max-width: 18rem;
+    margin-inline: auto;
+  }
+
+  .detalle-datos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.1rem;
+  }
+
+  .detalle-datos dd {
+    margin-bottom: 0.5rem;
+  }
+}
