@@ -11,8 +11,48 @@
 <body data-page="registro">
     <div data-parcial="header"></div>
 
-    <main class="container">
-        <!-- TODO: formulario de registro (nombre, correo, contraseña, confirmar contraseña) con validaciones JS -->
+    <!-- novalidate: la validación la hace validaciones.js, no el navegador
+         (requisito de la EV1). Ver el mismo comentario en login.html. -->
+    <main class="formulario-pagina">
+        <h1>Crear cuenta</h1>
+        <p class="txt-secundario">La dirección de entrega y el número de contacto se completan después, en tu
+            perfil.</p>
+
+        <form class="formulario" id="form-registro" novalidate>
+            <p class="form-mensaje" id="registro-mensaje" role="status"></p>
+
+            <div class="campo">
+                <label for="registro-nombre">Nombre completo</label>
+                <input type="text" id="registro-nombre" name="nombre" autocomplete="name"
+                    aria-describedby="error-registro-nombre">
+                <p class="error" id="error-registro-nombre"></p>
+            </div>
+
+            <div class="campo">
+                <label for="registro-email">Correo electrónico</label>
+                <input type="email" id="registro-email" name="email" autocomplete="email"
+                    aria-describedby="error-registro-email">
+                <p class="error" id="error-registro-email"></p>
+            </div>
+
+            <div class="campo">
+                <label for="registro-password">Contraseña</label>
+                <input type="password" id="registro-password" name="password" autocomplete="new-password"
+                    aria-describedby="ayuda-registro-password error-registro-password">
+                <p class="ayuda txt-secundario" id="ayuda-registro-password">Mínimo 4 caracteres.</p>
+                <p class="error" id="error-registro-password"></p>
+            </div>
+
+            <div class="campo">
+                <label for="registro-confirmacion">Repite la contraseña</label>
+                <input type="password" id="registro-confirmacion" name="confirmacion" autocomplete="new-password"
+                    aria-describedby="error-registro-confirmacion">
+                <p class="error" id="error-registro-confirmacion"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Crear cuenta</button>
+            <p class="form-pie">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>.</p>
+        </form>
     </main>
 
     <div data-parcial="footer"></div>

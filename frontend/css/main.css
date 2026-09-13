@@ -110,7 +110,44 @@ a {
   border: 0;
 }
 
-/* TODO: botones (.btn, .btn-primary, .btn-sm, .link-btn) */
+/* BOTONES
+   Verde esmeralda para la acción principal, según la propuesta visual del
+   enunciado ("botones, enlaces y elementos interactivos").
+   TODO: variantes .btn-sm y .link-btn cuando alguna pantalla las necesite. */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--acc-ve);
+  border-radius: 4px;
+  background: none;
+  color: var(--acc-ve-dark);
+  font-family: var(--primary-font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(46 139 87 / 0.1);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--acc-ve-dark);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  border-color: var(--acc-ve);
+  background-color: var(--acc-ve);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  border-color: var(--acc-ve-dark);
+  background-color: var(--acc-ve-dark);
+}
 
 /* ENCABEZADO
    layout.js inyecta partials/header.html en las 10 páginas, así que este
@@ -403,7 +440,117 @@ footer,
 }
 /* TODO: detalle de producto (.detalle-producto, .detalle-imagen, .form-agregar-carrito) */
 
-/* TODO: formularios (.formulario-pagina, .formulario, .campo, .error, .form-mensaje) */
+/* FORMULARIOS (registro, login, perfil)
+   Columna angosta y centrada: son formularios cortos y una línea de 1100px de
+   ancho es incómoda de leer y de completar. Por eso estas páginas NO usan
+   .container, que es bastante más ancho. */
+.formulario-pagina {
+  width: min(34rem, 100% - 3rem);
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--surface);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.campo label {
+  color: var(--primary-font-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.campo input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--bg);
+  color: var(--primary-font-color);
+  font-family: var(--primary-font);
+  font-size: 0.95rem;
+}
+
+.campo input:focus-visible {
+  border-color: var(--acc-ve);
+  outline: 2px solid var(--acc-ve);
+  outline-offset: 1px;
+}
+
+/* El correo en perfil.html: se muestra pero no se edita. */
+.campo input[readonly] {
+  color: var(--secondary-font-color);
+  cursor: not-allowed;
+}
+
+/* Campo rechazado por mostrarError() (validaciones.js). El borde rojo no es la
+   única señal: debajo queda el texto del <p class="error"> y el atributo
+   aria-invalid, porque el color por sí solo no sirve para daltonismo ni para
+   un lector de pantalla. */
+.campo input.invalido {
+  border-color: var(--danger);
+}
+
+.ayuda {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+/* Sin texto no ocupan lugar: así el formulario no salta al aparecer un error. */
+.error:empty,
+.form-mensaje:empty {
+  display: none;
+}
+
+/* Mensaje general del formulario: el que no pertenece a un campo puntual
+   (credenciales incorrectas, datos guardados, sesión faltante). */
+.form-mensaje {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.form-mensaje.alerta {
+  border: 1px solid var(--danger);
+  background-color: rgb(179 38 30 / 0.08);
+  color: var(--danger);
+}
+
+.form-mensaje.exito {
+  border: 1px solid var(--acc-ve);
+  background-color: rgb(46 139 87 / 0.1);
+  color: var(--acc-ve-dark);
+}
+
+/* El mensaje que va DENTRO del <form> no necesita margen inferior propio:
+   el gap del flex ya separa. */
+.formulario .form-mensaje {
+  margin-bottom: 0;
+}
+
+.form-pie {
+  margin: 0;
+  color: var(--secondary-font-color);
+  font-size: 0.9rem;
+}
 
 /* ---- Carrito ------------------------------------------------------------ */
 
