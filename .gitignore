@@ -1,2 +1,11 @@
 # Caché del indexador Serena — local de cada máquina, no es parte del proyecto.
 .serena/
+
+# Documentación interna del codebase — se genera para leer local, no se versiona.
+docs/
+
+# Herramientas de agentes (GitNexus, Claude Code). Son configuración local de
+# cada máquina, no forman parte del trabajo evaluado del proyecto.
+.gitnexus/
+.claude/
+AGENTS.md
