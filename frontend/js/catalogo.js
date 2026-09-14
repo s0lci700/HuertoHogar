@@ -21,6 +21,10 @@ const grid = document.getElementById("grid-productos");
 function crearTarjetaProducto(producto) {
   const div = document.createElement("div");
   div.className = "producto-card";
+
+  // Sin precio no se puede cobrar: el botón va desactivado en vez de dejar
+  // agregar algo que sumaría 0 al total. Misma regla que renderizarDetalle().
+  const sinPrecio = producto.precio === null;
   div.innerHTML = `
   <div class="producto-info">
         
@@ -31,7 +35,8 @@ function crearTarjetaProducto(producto) {
         Precio: ${formatearPrecio(producto.precio)}<br>
         
         
-        <button data-codigo="${producto.codigo}">Agregar al carrito</button>
+        <button data-codigo="${producto.codigo}" ${sinPrecio ? "disabled" : ""}>Agregar al carrito</button>
+        ${sinPrecio ? '<p class="alerta">Este producto todavía no tiene precio publicado.</p>' : ""}
   </div>`;
   return div;
 }
@@ -110,7 +115,11 @@ function engancharBotonesAgregar() {
     if (!boton) {
       return
     }
-    let producto = productosDelCatalogo.find(i => i.codigo === boton.getAttribute("data-codigo"));
+    const producto = productosDelCatalogo.find(
+      (item) => item.codigo === boton.getAttribute("data-codigo")
+    );
+    if (!producto || producto.precio === null) return;
+
     agregarProducto(producto, 1);
     actualizarBadgeCarrito();
   })
@@ -118,7 +127,6 @@ function engancharBotonesAgregar() {
 
 // Punto de entrada de esta página.
 async function iniciarCatalogo() {
-  const grid = document.getElementById("grid-productos");
   if (!grid) return;
   // El error más habitual en desarrollo es abrir el .html con doble clic: ahí
   // fetch() falla y sin este catch la grilla queda muda, sin ninguna pista.
