@@ -51,6 +51,8 @@ function actualizarCantidad(codigo, cantidad) {
     quitarProducto(codigo);
     return;
   }
+  if (!producto) return;
+
   producto.cantidad = validarCantidad(cantidad);
   guardarCarrito(carrito);
 }
@@ -72,4 +74,39 @@ function calcularTotal(carrito) {
 
 function vaciarCarrito() {
   guardarCarrito([]);
+}
+
+// PEDIDOS
+// El enunciado pide "confirmación del pedido y generación de la boleta". Sin
+// backend todavía, el pedido confirmado se guarda en localStorage igual que el
+// carrito: en EV3 esta función pasa a ser un POST al API.
+const PEDIDO_KEY = "huertohogar-pedido";
+const FOLIO_KEY = "huertohogar-folio";
+
+// Número de boleta correlativo. Se guarda aparte del pedido porque tiene que
+// sobrevivir a la boleta siguiente: si viviera dentro del pedido, cada compra
+// nueva pisaría el contador y todas las boletas saldrían con el mismo número.
+function siguienteFolio() {
+  const folio = Number(localStorage.getItem(FOLIO_KEY) || 0) + 1;
+  localStorage.setItem(FOLIO_KEY, folio);
+  return "HH-" + String(folio).padStart(4, "0");
+}
+
+// Convierte el carrito en un pedido, lo guarda y deja el carrito vacío.
+// Devuelve el pedido para que la vista pueda dibujar la boleta, o null si no
+// había nada que confirmar.
+function confirmarPedido() {
+  const carrito = obtenerCarrito();
+  if (carrito.length === 0) return null;
+
+  const pedido = {
+    folio: siguienteFolio(),
+    fecha: new Date().toISOString(),
+    items: carrito,
+    total: calcularTotal(carrito),
+  };
+
+  localStorage.setItem(PEDIDO_KEY, JSON.stringify(pedido));
+  vaciarCarrito();
+  return pedido;
 }

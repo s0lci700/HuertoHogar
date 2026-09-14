@@ -11,33 +11,29 @@
 <body data-page="carrito">
     <div data-parcial="header"></div>
 
-    <main class="container">
-    <div class="row">
-      <div class="col-8">
-        <h1>Productos disponibles</h1>
-        <div id="grid-productos" class="grid-productos">
-           <!-- Los productos se cargarán aquí con JavaScript -->
-        </div>
-      </div><!-- .col-8-->
+    <main class="container carrito-pagina">
+        <h1>Tu carrito</h1>
 
-      <div class="col-4"> 
-        <h2>🛒 Carrito</h2>
         <ul id="lista-carrito" class="carrito-lista">
           <!-- Los items del carrito se mostrarán aquí -->
         </ul>
 
         <!-- renderizarCarrito() muestra este párrafo y esconde #resumen-carrito
              cuando el carrito está vacío, y al revés cuando tiene items. -->
-        <p id="carrito-vacio">Tu carrito está vacío.</p>
+        <p id="carrito-vacio" class="carrito-vacio">
+          Tu carrito está vacío. <a href="productos.html">Ver los productos</a>.
+        </p>
 
         <div id="resumen-carrito" class="carrito-resumen">
           <p class="carrito-total">Total: <span id="total-carrito">0</span></p>
-          <!-- TODO: botón "Confirmar pedido" -->
+          <div class="carrito-acciones">
+            <button id="btn-vaciar" class="btn">Vaciar carrito</button>
+            <button id="btn-confirmar" class="btn btn-primary">Confirmar pedido</button>
+          </div>
         </div>
 
-        <button id="btn-vaciar">Vaciar Carrito</button>
-      </div> <!-- .col-4 -->
-    </div><!-- .row -->
+        <!-- confirmarPedido() pinta acá la boleta y saca el hidden. -->
+        <section id="comprobante" class="comprobante" aria-live="polite" hidden></section>
     </main>
 
     <div data-parcial="footer"></div>

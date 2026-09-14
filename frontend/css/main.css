@@ -798,7 +798,97 @@ footer,
   color: #fff;
 }
 
-/* TODO: carrito (.carrito-resumen, .carrito-total) */
+/* TODO: mapa de tiendas en Nosotros (.mapa) */
+
+/* RESUMEN Y BOLETA
+   El resumen cierra la lista: mismo ancho, pegado abajo y alineado a la
+   derecha, que es donde queda la columna "Subtotal" de cada fila. */
+.carrito-pagina {
+  max-width: 900px;
+  padding-block: 2rem 3rem;
+}
+
+.carrito-vacio {
+  color: var(--secondary-font-color);
+}
+
+.carrito-resumen {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--surface);
+}
+
+.carrito-total {
+  margin: 0 0 1rem;
+  font-family: var(--header-font);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--acc-mc);
+  text-align: right;
+}
+
+.carrito-total span {
+  color: var(--acc-ve-dark);
+}
+
+/* Confirmar es la acción principal, así que va última y en verde sólido:
+   en lectura de izquierda a derecha el botón destacado queda al final. */
+.carrito-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.comprobante {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--acc-ve);
+  border-radius: 6px;
+  background-color: var(--surface);
+}
+
+.comprobante-folio {
+  color: var(--secondary-font-color);
+}
+
+.comprobante-tabla {
+  width: 100%;
+  margin: 1rem 0 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.comprobante-tabla th,
+.comprobante-tabla td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+/* Cantidad, precio y subtotal son números: a la derecha se comparan mejor. */
+.comprobante-tabla th:not(:first-child),
+.comprobante-tabla td:not(:first-child) {
+  text-align: right;
+}
+
+.comprobante-tabla thead th {
+  color: var(--secondary-font-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.comprobante-tabla tfoot th,
+.comprobante-tabla tfoot td {
+  border-bottom: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--acc-mc);
+}
 
 /* En pantallas chicas las 7 columnas no caben: el encabezado se esconde y cada
    item se arma en tres líneas con grid-template-areas. Los rótulos que se
@@ -864,7 +954,6 @@ footer,
   }
 }
 
-/* TODO: mapa de tiendas en Nosotros (.mapa) */
 
 /* Bajo 760px la foto y la ficha no caben lado a lado: se apilan en una columna.
    Mismo punto de quiebre que el encabezado y el carrito. */
