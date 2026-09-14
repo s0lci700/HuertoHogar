@@ -1270,3 +1270,48 @@ footer,
 .articulo-card p:last-child {
   margin-bottom: 0;
 }
+
+/* NOSOTROS
+   Las dos tarjetas de impacto y el listado de tiendas usaban clases sin
+   ninguna regla, así que caían al estilo por defecto del navegador. */
+.impacto-ambiental,
+.tiendas {
+  padding-block: 2rem;
+}
+
+.carbono,
+.contribuciones {
+  padding: 1.25rem;
+  border-left: 3px solid var(--acc-ve);
+  background-color: var(--surface);
+  margin-top: 1rem;
+}
+
+.carbono h3,
+.contribuciones h3 {
+  margin-top: 0;
+}
+
+/* Las 7 tiendas en columnas: como lista de viñetas ocupaban siete líneas para
+   siete palabras. auto-fit reparte según el ancho disponible. */
+.lista-tiendas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-tiendas li {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--surface);
+  font-weight: 600;
+  color: var(--acc-mc);
+}
+
+.lista-tiendas li::before {
+  content: "📍 ";
+}
