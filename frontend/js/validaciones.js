@@ -12,6 +12,7 @@
 const LARGO_MINIMO_PASSWORD = 4;
 const LARGO_MINIMO_NOMBRE = 3;
 const LARGO_MINIMO_DIRECCION = 5;
+const LARGO_MINIMO_MENSAJE = 10;
 
 // Muestra el mensaje de error de un campo y lo marca visualmente.
 // `campo` es el <input>; el <p class="error"> es hermano suyo dentro de .campo.
@@ -270,8 +271,54 @@ function iniciarPerfil() {
   });
 }
 
+// form-contacto: valida nombre, correo y mensaje.
+//
+// No hay a dónde enviarlo: EV1 no tiene backend, así que el formulario
+// confirma en pantalla y se limpia. En EV3 esto pasa a ser un POST al API.
+function iniciarContacto() {
+  const form = document.getElementById("form-contacto");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const nombre = leerCampo(form, "nombre");
+    const email = leerCampo(form, "email");
+    const mensaje = leerCampo(form, "mensaje");
+    let valido = true;
+
+    if (nombre.value.trim().length < LARGO_MINIMO_NOMBRE) {
+      mostrarError(nombre, `El nombre debe tener al menos ${LARGO_MINIMO_NOMBRE} caracteres.`);
+      valido = false;
+    }
+
+    if (!validarEmail(email.value)) {
+      mostrarError(email, "Escribe un correo válido, por ejemplo nombre@correo.cl.");
+      valido = false;
+    }
+
+    if (mensaje.value.trim().length < LARGO_MINIMO_MENSAJE) {
+      mostrarError(mensaje, `Cuéntanos un poco más: al menos ${LARGO_MINIMO_MENSAJE} caracteres.`);
+      valido = false;
+    }
+
+    if (!valido) {
+      mostrarMensaje("contacto-mensaje", "Revisa los campos marcados.", "alerta");
+      return;
+    }
+
+    form.reset();
+    mostrarMensaje(
+      "contacto-mensaje",
+      `Gracias, ${nombre.value.trim()}. Recibimos tu mensaje y te respondemos a ${email.value.trim()}.`,
+      "exito"
+    );
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   iniciarRegistro();
   iniciarLogin();
   iniciarPerfil();
+  iniciarContacto();
 });

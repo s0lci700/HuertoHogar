@@ -780,7 +780,9 @@ footer,
   font-weight: 600;
 }
 
-.campo input {
+.campo input,
+.campo textarea,
+.campo select {
   padding: 0.55rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -790,7 +792,9 @@ footer,
   font-size: 0.95rem;
 }
 
-.campo input:focus-visible {
+.campo input:focus-visible,
+.campo textarea:focus-visible,
+.campo select:focus-visible {
   border-color: var(--acc-ve);
   outline: 2px solid var(--acc-ve);
   outline-offset: 1px;
@@ -806,7 +810,8 @@ footer,
    única señal: debajo queda el texto del <p class="error"> y el atributo
    aria-invalid, porque el color por sí solo no sirve para daltonismo ni para
    un lector de pantalla. */
-.campo input.invalido {
+.campo input.invalido,
+.campo textarea.invalido {
   border-color: var(--danger);
 }
 
@@ -1157,4 +1162,100 @@ footer,
   .detalle-datos dd {
     margin-bottom: 0.5rem;
   }
+}
+
+/* CONTACTO
+   Formulario y canales alternativos lado a lado; en móvil se apilan y el
+   formulario queda primero, que es lo que la gente viene a hacer. */
+.contacto-pagina {
+  padding-block: 2rem 3rem;
+}
+
+.contacto-columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.contacto-pagina .formulario {
+  margin: 0;
+  max-width: none;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.contacto-datos {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--surface);
+}
+
+.contacto-datos dt {
+  margin-top: 1rem;
+  color: var(--secondary-font-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contacto-datos dt:first-of-type {
+  margin-top: 0;
+}
+
+.contacto-datos dd {
+  margin: 0.2rem 0 0;
+}
+
+.contacto-datos a {
+  color: var(--acc-ve-dark);
+}
+
+@media (max-width: 720px) {
+  .contacto-columnas {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BLOG
+   Tres artículos de largo parecido: auto-fit los deja en fila en escritorio y
+   en una columna en teléfono, igual que las categorías de la portada. */
+.blog-pagina {
+  padding-block: 2rem 3rem;
+}
+
+.grid-articulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.articulo-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--surface);
+}
+
+.articulo-meta {
+  margin: 0 0 0.5rem;
+  color: var(--secondary-font-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.articulo-card h2 {
+  font-size: 1.25rem;
+}
+
+.articulo-card p:last-child {
+  margin-bottom: 0;
 }

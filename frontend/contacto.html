@@ -11,13 +11,75 @@
 <body data-page="contacto">
     <div data-parcial="header"></div>
 
-    <main class="container">
-        <!-- TODO: formulario de contacto y datos de las tiendas -->
+    <!-- novalidate por la misma razón que en login y registro: la EV1 pide que
+         las validaciones las haga JavaScript y no el navegador. -->
+    <main class="container contacto-pagina">
+        <h1>Contacto</h1>
+        <p class="txt-secundario">¿Tienes una duda sobre un pedido o sobre nuestros
+            productores? Escríbenos y te respondemos dentro de un día hábil.</p>
+
+        <div class="contacto-columnas">
+            <form class="formulario" id="form-contacto" novalidate>
+                <p class="form-mensaje" id="contacto-mensaje" role="status"></p>
+
+                <div class="campo">
+                    <label for="contacto-nombre">Nombre</label>
+                    <input type="text" id="contacto-nombre" name="nombre" autocomplete="name"
+                        aria-describedby="error-contacto-nombre">
+                    <p class="error" id="error-contacto-nombre"></p>
+                </div>
+
+                <div class="campo">
+                    <label for="contacto-email">Correo electrónico</label>
+                    <input type="email" id="contacto-email" name="email" autocomplete="email"
+                        aria-describedby="error-contacto-email">
+                    <p class="error" id="error-contacto-email"></p>
+                </div>
+
+                <div class="campo">
+                    <label for="contacto-asunto">Asunto</label>
+                    <select id="contacto-asunto" name="asunto">
+                        <option value="pedido">Consulta sobre un pedido</option>
+                        <option value="productos">Consulta sobre un producto</option>
+                        <option value="despacho">Despacho y cobertura</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="contacto-mensaje-texto">Mensaje</label>
+                    <textarea id="contacto-mensaje-texto" name="mensaje" rows="5"
+                        aria-describedby="error-contacto-mensaje"></textarea>
+                    <p class="error" id="error-contacto-mensaje"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </form>
+
+            <aside class="contacto-datos" aria-labelledby="titulo-datos">
+                <h2 id="titulo-datos">Otros canales</h2>
+                <dl>
+                    <dt>Correo</dt>
+                    <dd><a href="mailto:contacto@huertohogar.cl">contacto@huertohogar.cl</a></dd>
+
+                    <dt>Teléfono</dt>
+                    <dd><a href="tel:+56223456789">+56 2 2345 6789</a></dd>
+
+                    <dt>Atención</dt>
+                    <dd>Lunes a viernes, 9:00 a 18:00</dd>
+
+                    <dt>Tiendas</dt>
+                    <dd>Despachamos desde 7 puntos del país.
+                        <a href="nosotros.html">Ver dónde estamos</a>.</dd>
+                </dl>
+            </aside>
+        </div>
     </main>
 
     <div data-parcial="footer"></div>
 
     <script src="js/carrito.js"></script>
+    <script src="js/validaciones.js"></script>
     <script src="js/layout.js"></script>
 </body>
 
