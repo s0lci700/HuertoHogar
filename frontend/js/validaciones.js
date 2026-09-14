@@ -13,6 +13,11 @@ const LARGO_MINIMO_PASSWORD = 4;
 const LARGO_MINIMO_NOMBRE = 3;
 const LARGO_MINIMO_DIRECCION = 5;
 const LARGO_MINIMO_MENSAJE = 10;
+const DIGITOS_MINIMOS_TELEFONO = 8;
+const DIGITOS_MAXIMOS_TELEFONO = 12;
+// Lo único que se acepta además de los dígitos, porque es como la gente separa
+// un teléfono al escribirlo.
+const SEPARADORES_TELEFONO = " ()+-";
 
 // Muestra el mensaje de error de un campo y lo marca visualmente.
 // `campo` es el <input>; el <p class="error"> es hermano suyo dentro de .campo.
@@ -37,10 +42,37 @@ function limpiarError(campo) {
   campo.removeAttribute("aria-invalid");
 }
 
-// Valida el formato del correo. El taller pide como mínimo que contenga "@";
-// esta regex además exige texto antes, un punto después y ningún espacio.
+// Valida el formato del correo.
+//
+// El taller valida con email.includes("@") y nada más. Acá se piden cuatro
+// cosas, que son las que separan "ana@correo.cl" de "@correo.cl", "ana@",
+// "ana@correo." y "ana perez@correo.cl". Va con indexOf y length a propósito
+// y no con una expresión regular: la regla se tiene que poder leer y explicar
+// línea por línea.
 function validarEmail(valor) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
+  const correo = valor.trim();
+  const arroba = correo.indexOf("@");
+  const punto = correo.lastIndexOf(".");
+
+  // Un espacio en cualquier parte descarta el correo.
+  if (correo.includes(" ")) return false;
+
+  // Tiene que haber al menos un carácter antes del "@". indexOf devuelve 0 si
+  // el "@" va primero, y -1 si no hay "@" en ninguna parte.
+  if (arroba < 1) return false;
+
+  // Y tiene que haber uno solo: si el primer "@" y el último no son el mismo,
+  // hay más de uno ("ana@@correo.cl").
+  if (arroba !== correo.lastIndexOf("@")) return false;
+
+  // El último punto tiene que venir después del "@", con al menos un carácter
+  // de dominio entremedio: en "ana@.cl" el punto va pegado al "@".
+  if (punto < arroba + 2) return false;
+
+  // Y tiene que quedar algo después del punto, para que exista el ".cl".
+  if (punto === correo.length - 1) return false;
+
+  return true;
 }
 
 // El taller pide mínimo 4 caracteres. Acá no se hace trim: los espacios son
@@ -49,11 +81,30 @@ function validarPassword(valor) {
   return valor.length >= LARGO_MINIMO_PASSWORD;
 }
 
-// Número de contacto. Se aceptan espacios, guiones, paréntesis y un "+" inicial,
-// y se exigen entre 8 y 12 dígitos (un celular chileno son 9: 9 1234 5678).
+// Número de contacto. La gente escribe el teléfono de muchas formas
+// ("+56 9 1234 5678", "(2) 2345 6789", "912345678"), así que en vez de exigir
+// un formato se recorre el texto carácter por carácter, se juntan solo los
+// dígitos y se ignora el resto. Un celular chileno tiene 9 dígitos; el rango
+// deja espacio para los fijos y para el código de país.
 function validarTelefono(valor) {
-  const digitos = valor.replace(/[\s()+-]/g, "");
-  return /^\d{8,12}$/.test(digitos);
+  let digitos = "";
+
+  for (let i = 0; i < valor.length; i++) {
+    const caracter = valor.charAt(i);
+
+    if (caracter >= "0" && caracter <= "9") {
+      digitos = digitos + caracter;
+    } else if (!SEPARADORES_TELEFONO.includes(caracter)) {
+      // Una letra o un símbolo raro descarta el número entero. Si no,
+      // "9123456a8" pasaría: se le caería la letra y quedarían 8 dígitos.
+      return false;
+    }
+  }
+
+  return (
+    digitos.length >= DIGITOS_MINIMOS_TELEFONO &&
+    digitos.length <= DIGITOS_MAXIMOS_TELEFONO
+  );
 }
 
 // Guarda el usuario bajo USUARIO_KEY.
