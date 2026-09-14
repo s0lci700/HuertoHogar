@@ -5,8 +5,8 @@ Caso **Forma A — HuertoHogar**
 
 | | |
 |---|---|
-| Versión | 1.0 — etapa **EV1** |
-| Fecha | 11 de septiembre de 2026 |
+| Versión | 1.1 — etapa **EV1** |
+| Fecha | 13 de septiembre de 2026 |
 | Autora | Sol León |
 | Repositorio | https://github.com/s0lci700/HuertoHogar |
 
@@ -96,7 +96,7 @@ autenticación real con JWT.
 - Detalle individual de producto.
 - Carrito de compras persistente.
 - Registro, inicio de sesión y perfil de usuario (simulados).
-- Página institucional con misión, visión y mapa de tiendas.
+- Página institucional con misión, visión y listado de tiendas.
 - Blog de contenido educativo.
 
 ### 2.3 Características de los usuarios
@@ -146,7 +146,7 @@ Estado: ✅ implementado · 🔄 parcial · ⬜ pendiente · ⏸ diferido a etap
 | RF-01 | Todas las páginas comparten el mismo encabezado, navegación y pie de página | Semana 04 | EV1 | ✅ |
 | RF-02 | La navegación entre páginas es funcional | Inst. §7 | EV1 | ✅ |
 | RF-03 | El enlace de la página actual se marca como activo | Semana 04 | EV1 | ✅ |
-| RF-04 | El contador del carrito es visible en la navegación de todas las páginas | Semana 04 | EV1 | 🔄 |
+| RF-04 | El contador del carrito es visible en la navegación de todas las páginas | Semana 04 | EV1 | ✅ |
 
 ### 3.2 Catálogo de productos
 
@@ -154,7 +154,7 @@ Estado: ✅ implementado · 🔄 parcial · ⬜ pendiente · ⏸ diferido a etap
 |---|---|---|---|---|
 | RF-10 | Mostrar el catálogo con precio, descripción, origen y disponibilidad | Enunciado p. 2 | EV1 | ✅ |
 | RF-11 | Filtrar productos por categoría | Enunciado p. 2 | EV1 | ✅ |
-| RF-12 | Mostrar el detalle de un producto individual | Enunciado p. 2 | EV1 | ⬜ |
+| RF-12 | Mostrar el detalle de un producto individual | Enunciado p. 2 | EV1 | ✅ |
 | RF-13 | Mostrar el origen de cada producto | Enunciado p. 5 | EV1 | ✅ |
 | RF-14 | Búsqueda por texto con filtrado combinado | Enunciado p. 3 | EV2 | ⬜ |
 
@@ -162,22 +162,22 @@ Estado: ✅ implementado · 🔄 parcial · ⬜ pendiente · ⏸ diferido a etap
 
 | ID | Requisito | Origen | Etapa | Estado |
 |---|---|---|---|---|
-| RF-20 | Agregar productos al carrito | Enunciado p. 2 | EV1 | ⬜ |
-| RF-21 | Modificar la cantidad de un producto en el carrito | Enunciado p. 2 | EV1 | ⬜ |
-| RF-22 | Eliminar un producto del carrito | Enunciado p. 2 | EV1 | ⬜ |
-| RF-23 | Vaciar el carrito completo | Semana 04 | EV1 | ⬜ |
-| RF-24 | Mostrar resumen con precios detallados y total | Enunciado p. 2 | EV1 | ⬜ |
-| RF-25 | El carrito persiste entre páginas y tras recargar | Inst. §7 | EV1 | 🔄 |
-| RF-26 | Máximo 5 unidades por producto | Semana 04 | EV1 | ⬜ |
+| RF-20 | Agregar productos al carrito | Enunciado p. 2 | EV1 | ✅ |
+| RF-21 | Modificar la cantidad de un producto en el carrito | Enunciado p. 2 | EV1 | ✅ |
+| RF-22 | Eliminar un producto del carrito | Enunciado p. 2 | EV1 | ✅ |
+| RF-23 | Vaciar el carrito completo | Semana 04 | EV1 | ✅ |
+| RF-24 | Mostrar resumen con precios detallados y total | Enunciado p. 2 | EV1 | ✅ |
+| RF-25 | El carrito persiste entre páginas y tras recargar | Inst. §7 | EV1 | ✅ |
+| RF-26 | Máximo 5 unidades por producto | Semana 04 | EV1 | ✅ |
 
 ### 3.4 Usuarios
 
 | ID | Requisito | Origen | Etapa | Estado |
 |---|---|---|---|---|
-| RF-30 | Registro con correo electrónico y contraseña | Enunciado p. 2 | EV1 | ⬜ |
-| RF-31 | Inicio de sesión | Enunciado p. 2 | EV1 | ⬜ |
-| RF-32 | Gestión de perfil: dirección de entrega y número de contacto | Enunciado p. 2 | EV1 | ⬜ |
-| RF-33 | Cerrar sesión **sin borrar el carrito** | Semana 04 | EV1 | ⬜ |
+| RF-30 | Registro con correo electrónico y contraseña | Enunciado p. 2 | EV1 | ✅ |
+| RF-31 | Inicio de sesión | Enunciado p. 2 | EV1 | ✅ |
+| RF-32 | Gestión de perfil: dirección de entrega y número de contacto | Enunciado p. 2 | EV1 | ✅ |
+| RF-33 | Cerrar sesión **sin borrar el carrito** | Semana 04 | EV1 | ✅ |
 | RF-34 | Autenticación real con JWT, roles y permisos | Inst. §9 | EV3 | ⏸ |
 
 ### 3.5 Contenido institucional
@@ -185,11 +185,22 @@ Estado: ✅ implementado · 🔄 parcial · ⬜ pendiente · ⏸ diferido a etap
 | ID | Requisito | Origen | Etapa | Estado |
 |---|---|---|---|---|
 | RF-40 | Página con misión y visión | Enunciado p. 1 | EV1 | ✅ |
-| RF-41 | Mapa con las tiendas del país | Enunciado p. 3 | EV1 | ⬜ |
-| RF-42 | Blog o sección de noticias sobre alimentación y sostenibilidad | Enunciado p. 3 | EV1 | ⬜ |
-| RF-43 | Sección de impacto ambiental (huella de carbono, comunidad) | Enunciado p. 5 | EV2 | ⬜ |
+| RF-41 | Mapa con las tiendas del país | Enunciado p. 3 | EV2 | ⏸ |
+| RF-42 | Blog o sección de noticias sobre alimentación y sostenibilidad | Enunciado p. 3 | EV1 | ✅ |
+| RF-43 | Sección de impacto ambiental (huella de carbono, comunidad) | Enunciado p. 5 | EV1 | ✅ |
 
-### 3.6 Requisitos diferidos — dependen de backend y de validación de alcance
+### 3.6 Pedido
+
+| ID | Requisito | Origen | Etapa | Estado |
+|---|---|---|---|---|
+| RF-50 | Confirmación del pedido y generación de la boleta | Enunciado p. 2 | EV1 | ✅ |
+
+RF-50 está implementado **simulado**: `confirmarPedido()` arma el pedido con un
+folio correlativo, lo guarda bajo `huertohogar-pedido` en `localStorage` y vacía
+el carrito; `renderizarComprobante()` dibuja la boleta. No hay envío a un
+servidor ni documento tributario real — eso llega en EV3 junto con el API.
+
+### 3.7 Requisitos diferidos — dependen de backend y de validación de alcance
 
 Los siguientes requisitos aparecen en el enunciado pero **no son realizables en
 EV1** por depender de un servidor, y su inclusión definitiva está sujeta a la
@@ -197,7 +208,6 @@ validación de alcance descrita en §1.3.
 
 | ID | Requisito | Origen | Etapa estimada |
 |---|---|---|---|
-| RF-50 | Confirmación de pedido y generación de boleta | p. 2 | EV3 |
 | RF-51 | Notificaciones de estado del pedido | p. 2 | EV3 |
 | RF-52 | Rastreo de envíos en tiempo real | p. 2 | EV3 |
 | RF-53 | Selección de fecha de entrega preferida | p. 2 | EV3 |
@@ -334,12 +344,12 @@ frontend/
 └── js/
     ├── layout.js            inyecta los parciales, nav activo, contador
     ├── productos.js         carga y cachea el catálogo
-    ├── carrito.js           estado del carrito (solo datos)
+    ├── carrito.js           estado del carrito y del pedido (solo datos)
     ├── catalogo.js          vista de productos.html
     ├── carrito-vista.js     vista de carrito.html
     ├── producto-detalle.js  vista de producto.html
-    ├── validaciones.js      formularios de registro, login y perfil
-    └── mapa.js              mapa de tiendas en nosotros.html
+    ├── inicio.js            categorías destacadas de index.html
+    └── validaciones.js      formularios de registro, login, perfil y contacto
 database/productos.json
 documentacion/ERS-HuertoHogar.md
 ```
@@ -396,26 +406,25 @@ Se documentan por transparencia y porque afectan decisiones de implementación.
 | Estructura y navegación | ✅ completo |
 | Diseño visual (paleta, tipografía, textura) | ✅ completo |
 | Catálogo y filtros | ✅ completo |
-| Detalle de producto | ⬜ pendiente |
-| Carrito | 🔄 lectura y escritura en `localStorage` listas; faltan las operaciones |
-| Formularios y validaciones | ⬜ pendiente |
-| Mapa de tiendas | ⬜ pendiente (falta incorporar Leaflet) |
-| Blog | ⬜ pendiente |
+| Detalle de producto | ✅ completo |
+| Carrito | ✅ completo, con confirmación de pedido y boleta |
+| Formularios y validaciones | ✅ completo (registro, login, perfil, contacto) |
+| Contenido institucional (Nosotros, Blog, Contacto) | ✅ completo |
+| Mapa de tiendas | ⏸ diferido a EV2; en su lugar va la lista de las 7 tiendas |
 | Documentación (este ERS) | 🔄 iniciado, según corresponde a EV1 |
 
 ### Pendientes conocidos
 
-1. Implementar las operaciones del carrito: `agregarProducto`, `actualizarCantidad`,
-   `quitarProducto`, `calcularTotal`, `vaciarCarrito` (RF-20 a RF-24).
-2. Conectar el botón «Agregar al carrito»: `engancharBotonesAgregar()` está vacío
-   y la tarjeta aún usa `onclick="agregarAlCarrito(producto.id)"`, función y
-   campo que no existen en el modelo de datos actual.
-3. Implementar la vista del carrito (`carrito-vista.js`).
-4. Implementar los formularios de registro, login y perfil (RF-30 a RF-33).
-5. Implementar el detalle de producto (RF-12).
-6. Incorporar Leaflet en `nosotros.html` para el mapa (RF-41).
-7. Redactar el contenido del blog (RF-42).
-8. Validar el alcance definitivo con el docente (§1.3).
+1. **Mapa de tiendas (RF-41).** Se difiere a EV2. El enunciado lo plantea como
+   un deseo («nos gustaría») y no como requisito, y Leaflet no alcanzaba a
+   entrar antes de la entrega de EV1. `nosotros.html` muestra en su lugar la
+   lista de las 7 tiendas, que es el dato que el mapa iba a comunicar.
+2. **PO003 y PL001 sin precio ni stock (DEC-03).** Se muestran en el catálogo
+   como «Precio a confirmar» y con el botón de agregar desactivado, tanto en la
+   tarjeta como en la ficha. Falta resolver los datos con el docente.
+3. **Búsqueda por texto (RF-14).** Diferida a EV2, donde el filtrado se rehace
+   con componentes de React.
+4. Validar el alcance definitivo con el docente (§1.3).
 
 ---
 
@@ -442,3 +451,4 @@ Server de VS Code abriendo la carpeta desde la raíz del proyecto.
 | Versión | Fecha | Etapa | Cambios |
 |---|---|---|---|
 | 1.0 | 2026-09-11 | EV1 | Versión inicial: alcance, requisitos, modelo de datos, arquitectura y decisiones de diseño |
+| 1.1 | 2026-09-13 | EV1 | Estados de los requisitos puestos al día con lo efectivamente construido. RF-50 (confirmación de pedido y boleta) pasa a implementado y sale de los diferidos; RF-41 (mapa) se difiere a EV2; RF-42 y RF-43 quedan implementados. Se actualizan §5.3 y §8 |
