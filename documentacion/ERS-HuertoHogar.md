@@ -5,8 +5,8 @@ Caso **Forma A — HuertoHogar**
 
 | | |
 |---|---|
-| Versión | 1.1 — etapa **EV1** |
-| Fecha | 13 de septiembre de 2026 |
+| Versión | 1.2 — etapa **EV1** |
+| Fecha | 14 de septiembre de 2026 |
 | Autora | Sol León |
 | Repositorio | https://github.com/s0lci700/HuertoHogar |
 
@@ -156,6 +156,7 @@ Estado: ✅ implementado · 🔄 parcial · ⬜ pendiente · ⏸ diferido a etap
 | RF-11 | Filtrar productos por categoría | Enunciado p. 2 | EV1 | ✅ |
 | RF-12 | Mostrar el detalle de un producto individual | Enunciado p. 2 | EV1 | ✅ |
 | RF-13 | Mostrar el origen de cada producto | Enunciado p. 5 | EV1 | ✅ |
+| RF-15 | Destacar ofertas y promociones con el amarillo mostaza de la propuesta visual | Enunciado p. 4 | EV1 | ✅ |
 | RF-14 | Búsqueda por texto con filtrado combinado | Enunciado p. 3 | EV2 | ⬜ |
 
 ### 3.3 Carrito de compras
@@ -451,4 +452,5 @@ Server de VS Code abriendo la carpeta desde la raíz del proyecto.
 | Versión | Fecha | Etapa | Cambios |
 |---|---|---|---|
 | 1.0 | 2026-09-11 | EV1 | Versión inicial: alcance, requisitos, modelo de datos, arquitectura y decisiones de diseño |
+| 1.2 | 2026-09-14 | EV1 | Se agrega RF-15 (ofertas). El catálogo suma el campo opcional `precioAnterior`, que marca un producto en oferta y se muestra tachado sin entrar en ningún cálculo: lo que se cobra sigue saliendo de `precio` |
 | 1.1 | 2026-09-13 | EV1 | Estados de los requisitos puestos al día con lo efectivamente construido. RF-50 (confirmación de pedido y boleta) pasa a implementado y sale de los diferidos; RF-41 (mapa) se difiere a EV2; RF-42 y RF-43 quedan implementados. Se actualizan §5.3 y §8 |

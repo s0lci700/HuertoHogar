@@ -33,6 +33,7 @@
         "nombre": "Plátanos Cavendish",
         "categoria": "frutas",
         "precio": 800,
+        "precioAnterior": 1000,
         "unidad": "kilo",
         "stock": 250,
         "origen": "Chile",

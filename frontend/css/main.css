@@ -1320,3 +1320,37 @@ footer,
 .lista-tiendas li::before {
   content: "📍 ";
 }
+
+/* OFERTAS
+   El tercer color de acento del enunciado, por fin con dónde aplicarse:
+   "Amarillo Mostaza (#FFD700): para resaltar ofertas especiales y
+   promociones". Sobre el amarillo el texto va en marrón y no en blanco,
+   porque el blanco sobre #FFD700 no tiene contraste suficiente para leerse. */
+.etiqueta-oferta {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--acc-am);
+  color: var(--acc-mc);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+
+/* El precio anterior va en <s>, que ya es "ya no es exacto" semánticamente;
+   el tachado no queda solo como decoración de CSS. */
+.precio-anterior {
+  margin-left: 0.4rem;
+  color: var(--secondary-font-color);
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+.aviso-oferta {
+  margin: 0.25rem 0 0;
+  color: var(--acc-mc);
+  font-size: 0.9rem;
+  font-weight: 600;
+}

@@ -34,6 +34,10 @@ function renderizarDetalle(producto, categoria) {
   // en vez de dejar agregar algo que sumaría 0 al total.
   const sinPrecio = producto.precio === null;
 
+  // Misma regla que en la tarjeta del catálogo: la rebaja se muestra, pero lo
+  // que se cobra sigue siendo `precio`.
+  const enOferta = producto.precioAnterior > producto.precio;
+
   contenedor.className = "detalle-producto";
   contenedor.innerHTML = `
     <div class="detalle-imagen">
@@ -41,11 +45,15 @@ function renderizarDetalle(producto, categoria) {
     </div>
 
     <div class="detalle-info">
-      <p class="detalle-categoria">${categoria}</p>
+      <p class="detalle-categoria">${categoria}
+        ${enOferta ? '<span class="etiqueta-oferta">Oferta</span>' : ""}
+      </p>
       <h1>${producto.nombre}</h1>
       <p class="detalle-precio">${formatearPrecio(producto.precio)}
+        ${enOferta ? `<s class="precio-anterior">${formatearPrecio(producto.precioAnterior)}</s>` : ""}
         <span class="detalle-unidad">por ${producto.unidad}</span>
       </p>
+      ${enOferta ? '<p class="aviso-oferta">Oferta de temporada por cosecha abundante.</p>' : ""}
 
       <p class="descripcion">${producto.descripcion}</p>
 

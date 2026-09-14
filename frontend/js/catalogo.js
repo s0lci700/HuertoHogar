@@ -25,15 +25,23 @@ function crearTarjetaProducto(producto) {
   // Sin precio no se puede cobrar: el botón va desactivado en vez de dejar
   // agregar algo que sumaría 0 al total. Misma regla que renderizarDetalle().
   const sinPrecio = producto.precio === null;
+
+  // Está en oferta el producto cuyo precioAnterior del catálogo es mayor que su
+  // precio actual. La comparación se basta sola como guarda: si el producto no
+  // trae el campo, `undefined > 800` da false. El cobro sigue saliendo de
+  // `precio`; precioAnterior existe solo para mostrar de dónde bajó.
+  const enOferta = producto.precioAnterior > producto.precio;
   div.innerHTML = `
   <div class="producto-info">
         
+        ${enOferta ? '<span class="etiqueta-oferta">Oferta</span>' : ""}
         <strong><a class="producto-nombre" href="producto.html?codigo=${producto.codigo}">${producto.nombre}</a></strong> <aside>(${producto.codigo}) - <span class="categoria">${nombresDeCategoria[producto.categoria] || producto.categoria}</span></aside><br>
         <img src="${producto.imagen}" alt="${producto.nombre}">
         
         Origen: ${producto.origen}<br>
         Unidad: ${producto.unidad}<br>
-        <span class="precio">Precio: ${formatearPrecio(producto.precio)}<br>
+        <span class="precio">Precio: ${formatearPrecio(producto.precio)}
+          ${enOferta ? `<s class="precio-anterior">${formatearPrecio(producto.precioAnterior)}</s>` : ""}<br>
         </span>
         
         <button class='btn-primary btn' data-codigo="${producto.codigo}" ${sinPrecio ? "disabled" : ""}>Agregar al carrito</button>
