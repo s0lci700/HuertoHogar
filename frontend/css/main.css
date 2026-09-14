@@ -604,8 +604,12 @@ footer,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: max-content;
-  
+
+  /* Sin esto la tarjeta se estira al ancho de su contenido: el SVG de relleno
+     de Quinua mide 480px y reventaba la grilla con scroll horizontal. La
+     tarjeta ocupa la columna que le da .grid-productos, y min-width: 0 deja
+     que la columna pueda achicarse por debajo del contenido. */
+  min-width: 0;
 }
 
 .producto-card img {
@@ -614,10 +618,17 @@ footer,
   margin-bottom: 0.5rem;
 }
 
-.producto-info {
-  margin-top: 0.5rem;
+.producto-info { 
   text-align: left;
   text-transform: capitalize;
+  display: grid;
+  font-size: 0.9rem;
+}
+.producto-info .precio {
+  color: var(--acc-ve-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: large;
 }
 /* DETALLE DE PRODUCTO (producto.html)
    Dos columnas: la foto a la izquierda con ancho tope, el texto y el formulario

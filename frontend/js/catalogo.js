@@ -29,13 +29,14 @@ function crearTarjetaProducto(producto) {
   <div class="producto-info">
         
         <strong><a class="producto-nombre" href="producto.html?codigo=${producto.codigo}">${producto.nombre}</a></strong> <aside>(${producto.codigo}) - <span class="categoria">${nombresDeCategoria[producto.categoria] || producto.categoria}</span></aside><br>
-        <img src="${producto.imagen}" alt="${producto.nombre}"><br>
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        
         Origen: ${producto.origen}<br>
         Unidad: ${producto.unidad}<br>
-        Precio: ${formatearPrecio(producto.precio)}<br>
+        <span class="precio">Precio: ${formatearPrecio(producto.precio)}<br>
+        </span>
         
-        
-        <button data-codigo="${producto.codigo}" ${sinPrecio ? "disabled" : ""}>Agregar al carrito</button>
+        <button class='btn-primary btn' data-codigo="${producto.codigo}" ${sinPrecio ? "disabled" : ""}>Agregar al carrito</button>
         ${sinPrecio ? '<p class="alerta">Este producto todavía no tiene precio publicado.</p>' : ""}
   </div>`;
   return div;
