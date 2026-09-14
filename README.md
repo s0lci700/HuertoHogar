@@ -18,12 +18,16 @@ encabezado con `fetch('partials/header.html')`, así que hay que servir la **ra�
 repositorio** (no solo `frontend/`) con un servidor local. Abriendo los `.html` con
 doble clic, el navegador bloquea esas peticiones y la página se ve incompleta.
 
-```bash
-npx serve .
-```
+Con la extensión **Live Server** de Visual Studio Code:
 
-Después abrir <http://localhost:3000/frontend/> — o usar la extensión Live Server de
-VS Code, abriendo el proyecto desde la raíz.
+1. Abrir en VS Code la **carpeta completa del proyecto**, no la carpeta `frontend/`.
+2. Clic derecho sobre `frontend/index.html` → **Open with Live Server**.
+
+Abrir solo `frontend/` deja la raíz del servidor una carpeta más abajo y
+`../database/productos.json` queda fuera de alcance.
+
+Si se prefiere la terminal, `npx serve .` desde la raíz del repositorio hace lo mismo,
+y el sitio queda en <http://localhost:3000/frontend/>.
 
 ## Qué hay implementado en EV1
 

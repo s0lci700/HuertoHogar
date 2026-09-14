@@ -1,9 +1,10 @@
 // Catálogo de productos: carga database/productos.json y lo deja disponible
 // para el resto de las páginas.
 //
-// OJO: fetch() necesita un servidor local (Live Server o `npx serve .` desde la
-// RAÍZ del repositorio). La ruta '../database/...' se resuelve desde el .html
-// que está abierto, no desde este archivo .js.
+// OJO: fetch() necesita un servidor local, y servido desde la RAÍZ del
+// repositorio: con Live Server, eso significa abrir en VS Code la carpeta
+// completa del proyecto y no la carpeta frontend/. La ruta '../database/...' se
+// resuelve desde el .html que está abierto, no desde este archivo .js.
 
 // Guarda el catálogo ya descargado para no volver a pedirlo en cada llamada.
 let catalogoCache = null;

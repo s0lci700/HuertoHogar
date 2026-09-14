@@ -432,14 +432,15 @@ Se documentan por transparencia y porque afectan decisiones de implementación.
 ## 9. Ejecución del sistema
 
 El sitio requiere un servidor HTTP local, porque `fetch()` está bloqueado bajo
-`file://` (restricción R-02). Desde la **raíz del repositorio**:
+`file://` (restricción R-02).
 
-```bash
-npx serve .
-```
+La forma prevista es la que usa la asignatura: la extensión **Live Server** de
+Visual Studio Code, abriendo en el editor la **carpeta completa del proyecto** y
+ejecutando `frontend/index.html` con Live Server. En los equipos del laboratorio
+corresponde el puerto 5501.
 
-y abrir `http://localhost:3000/frontend/`. Alternativamente, la extensión Live
-Server de VS Code abriendo la carpeta desde la raíz del proyecto.
+Como alternativa por terminal, `npx serve .` desde la raíz del repositorio y
+abrir `http://localhost:3000/frontend/`.
 
 > Servir la carpeta `frontend/` en vez de la raíz **no funciona**: la ruta
 > `../database/productos.json` quedaría por encima del directorio raíz del

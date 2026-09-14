@@ -2,9 +2,10 @@
 // Cada página deja un contenedor vacío con data-parcial="header" / data-parcial="footer"
 // y este archivo inyecta el HTML del parcial correspondiente.
 //
-// OJO: usa fetch(), así que el sitio se debe abrir desde un servidor local
-// (Live Server o `npx serve .`). Abriendo el .html con doble clic (file://)
-// el navegador bloquea la petición y el encabezado no aparece.
+// OJO: usa fetch(), así que el sitio se debe abrir desde un servidor local:
+// Live Server de VS Code, con la carpeta completa del proyecto abierta en el
+// editor. Abriendo el .html con doble clic (file://) el navegador bloquea la
+// petición y el encabezado no aparece.
 //
 // Este archivo se carga en TODAS las páginas, por eso vive aquí la clave del
 // usuario que también usa validaciones.js.
