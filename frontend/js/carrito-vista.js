@@ -58,7 +58,6 @@ function engancharAccionesCarrito() {
     const carrito = obtenerCarrito();
     let producto = carrito.find((item) => item.codigo === codigo);
     if (!producto) {
-      console.log("no existe el producto: " + codigo);
       return;
     }
     let cantidad = producto.cantidad;
@@ -68,8 +67,6 @@ function engancharAccionesCarrito() {
     } else if (signo === "-") {
       actualizarCantidad(codigo, cantidad - 1);
     } else {
-      console.log("Quitando producto: " + codigo);
-      console.log(producto);
       quitarProducto(codigo);
     }
       renderizarCarrito();

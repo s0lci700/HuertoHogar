@@ -21,7 +21,6 @@ async function cargarCatalogo() {
 
   const data = await response.json();
   catalogoCache = data;
-  console.log("Catálogo cargado:", data);
   return data;
 }
 

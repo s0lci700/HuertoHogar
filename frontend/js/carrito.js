@@ -23,14 +23,11 @@ function obtenerCarrito() {
 
 function guardarCarrito(carrito) {
   localStorage.setItem(CARRITO_KEY, JSON.stringify(carrito));
-  console.log(carrito);
 }
 
 function agregarProducto(producto, cantidad) {
-  console.log(producto, cantidad);
   let carrito = obtenerCarrito();
   let item = carrito.find(i => i.codigo === producto.codigo);
-  console.log(item);
   if (item) {
       item.cantidad = validarCantidad(item.cantidad + cantidad);
       guardarCarrito(carrito);
@@ -61,7 +58,6 @@ function actualizarCantidad(codigo, cantidad) {
 function quitarProducto(codigo) {
   let carrito = obtenerCarrito();
   let nuevoCarrito = carrito.filter(item => item.codigo != codigo);
-  console.log("nuevo carrito = " + carrito);
   return guardarCarrito(nuevoCarrito);
 }
 
