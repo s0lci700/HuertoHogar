@@ -82,6 +82,11 @@ a {
   color: var(--acc-ve);
 }
 
+/* El amarillo mostaza es el tercer color de acento de la propuesta visual, y
+   el enunciado le da un uso concreto: "resaltar ofertas especiales y
+   promociones". El catálogo del enunciado no trae ninguna oferta, así que la
+   regla queda declarada y sin aplicar hasta que existan datos de promoción.
+   Inventar una oferta para usar el color sería inventar datos del negocio. */
 #sale,
 .promo {
   color: var(--acc-am);

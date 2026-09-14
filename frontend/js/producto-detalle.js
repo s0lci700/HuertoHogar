@@ -5,16 +5,30 @@
 // (agregarProducto, MAX_UNIDADES) y layout.js (formatearPrecio,
 // actualizarBadgeCarrito).
 
+// Pluraliza una unidad del catálogo. El plural va en la primera palabra y no
+// al final: "bolsa de 500g" son "bolsas de 500g", no "bolsa de 500gs". El
+// enunciado las nombra así ("80 bolsas", "50 frascos").
+function pluralizarUnidad(unidad) {
+  const palabras = unidad.split(" ");
+  palabras[0] = palabras[0] + "s";
+  return palabras.join(" ");
+}
+
 // Pinta el detalle del producto dentro de #detalle-producto.
 // Muestra lo que pide el enunciado para el catálogo: precio, descripción,
 // origen y disponibilidad.
 function renderizarDetalle(producto, categoria) {
   const contenedor = document.getElementById("detalle-producto");
 
+  // PO003 y PL001 no traen stock en el enunciado, igual que no traen precio.
+  const sinStock = producto.stock === null;
+
   // El tope real es el menor entre la regla del taller (5 unidades) y el stock.
   // Hoy siempre gana MAX_UNIDADES porque el stock más bajo del catálogo es 50,
-  // pero dejarlo calculado evita un carrito imposible si el stock baja.
-  const maximo = Math.min(MAX_UNIDADES, producto.stock);
+  // pero dejarlo calculado evita un carrito imposible si el stock baja. Sin
+  // stock conocido no se calcula: Math.min(5, null) da 0 y el texto de ayuda
+  // terminaba diciendo "Máximo 0 por compra".
+  const maximo = sinStock ? MAX_UNIDADES : Math.min(MAX_UNIDADES, producto.stock);
 
   // Sin precio no se puede cobrar, así que el formulario se muestra desactivado
   // en vez de dejar agregar algo que sumaría 0 al total.
@@ -41,7 +55,11 @@ function renderizarDetalle(producto, categoria) {
         <dt>Origen</dt>
         <dd>${producto.origen}</dd>
         <dt>Disponibilidad</dt>
-        <dd>${producto.stock} ${producto.unidad}s en stock</dd>
+        <dd>${
+          sinStock
+            ? "Por confirmar"
+            : `${producto.stock} ${pluralizarUnidad(producto.unidad)} en stock`
+        }</dd>
       </dl>
 
       <form class="form-agregar-carrito" id="form-agregar" novalidate>
@@ -50,7 +68,9 @@ function renderizarDetalle(producto, categoria) {
           <input type="number" id="cantidad" name="cantidad" value="1"
             min="1" max="${maximo}" step="1" ${sinPrecio ? "disabled" : ""}
             aria-describedby="ayuda-cantidad">
-          <p class="ayuda txt-secundario" id="ayuda-cantidad">Máximo ${maximo} por compra.</p>
+          <p class="ayuda txt-secundario" id="ayuda-cantidad">${
+            sinPrecio ? "No disponible por ahora." : `Máximo ${maximo} por compra.`
+          }</p>
         </div>
 
         <button type="submit" class="btn btn-primary" ${sinPrecio ? "disabled" : ""}>
