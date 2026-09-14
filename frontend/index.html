@@ -13,25 +13,27 @@
 
     <main>
         <section class="hero">
-            <div class="container">
-                <h1>HuertoHogar — Del campo a tu hogar</h1>
-                <h2>Bienvenido a HuertoHogar</h2>
-                <p>HuertoHogar es una tienda online dedicada a llevar la frescura y calidad de los productos del campo
-                    directamente a la puerta de nuestros clientes en Chile. Con más de 6 años de experiencia, operamos
-                    en más de 9 puntos a lo largo del país, incluyendo ciudades clave como Santiago, Puerto Montt,
-                    Villarica, Nacimiento, Viña del Mar, Valparaíso, y Concepción. Nuestra misión es conectar a las
-                    familias chilenas con el campo, promoviendo un estilo de vida saludable y sostenible.</p>
+            <div class="container hero-inner">
+                <p class="eyebrow">Del campo a tu hogar</p>
+                <h1>Productos frescos, directo del productor</h1>
+                <p class="hero-lead">Más de 6 años llevando la frescura del campo chileno a la
+                    puerta de nuestros clientes, con despacho desde 7 tiendas a lo largo del país.</p>
+                <a class="btn btn-primary" href="productos.html">Ver los productos</a>
             </div>
         </section>
 
-        <!-- TODO: categorías destacadas (desde database/productos.json) -->
-
-        
+        <!-- inicio.js rellena la grilla con las categorías de productos.json. -->
+        <section class="categorias container" aria-labelledby="titulo-categorias">
+            <h2 id="titulo-categorias">Categorías destacadas</h2>
+            <div class="grid-categorias" id="grid-categorias"></div>
+        </section>
     </main>
 
     <div data-parcial="footer"></div>
 
     <script src="js/carrito.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/inicio.js"></script>
     <script src="js/layout.js"></script>
 </body>
 

@@ -137,7 +137,15 @@ async function iniciarCatalogo() {
       nombresDeCategoria[categoria.id] = categoria.nombre;
     });
     renderizarFiltros(datos.categorias);
-    renderizarProductos(datos.productos);
+
+    // Las tarjetas de la portada enlazan a productos.html?categoria=frutas, así
+    // que la página abre ya filtrada. Se valida contra las categorías del
+    // catálogo: un id inventado en la URL cae en "todas" y no en una grilla
+    // vacía sin explicación.
+    const pedida = new URLSearchParams(location.search).get("categoria");
+    const existe = datos.categorias.some((categoria) => categoria.id === pedida);
+    aplicarFiltro(existe ? pedida : "todas");
+
     engancharBotonesAgregar();
   } catch (error) {
     console.error("No se pudo cargar el catálogo", error);
